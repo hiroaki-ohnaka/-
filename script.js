@@ -1,29 +1,17 @@
 // JavaScript
 
-const color = document.getElementById('myColor');
-const text = document.getElementById('bodyText');
+const main = document.querySelector('#main-image');
+const thumbs = document.querySelectorAll('.thumb');
+const fruits = ['apple','banana','orange'];
 
-//背景色を変更する関数
-//function構文を使う書き方
-function changeColor(){
-  document.body.style.backgroundColor = color.value;
+//console.log(main);
+//console.log(thumbs);
+const text = document.querySelector('#caption');
 
-  //カラーコードを表示
-  if (color.value === '#ffffff') {
-    text.textContent = 'コード：' + color.value + '(white)';
-  } else if (color.value === '#000000') {
-    text.textContent = 'コード：' + color.value + '(black)';
-  } else {
-    text.textContent = 'コード：' + color.value;
-  }
-
-}
-
-//アロー関数を使う書き方
-// const changeColor = () => {
-//   document.body.style.backgroundColor = color.value;
-//   text.textContent = color.value;
-// }
-
-// カラーピッカーが変更されたときに、背景色を変える
-color.addEventListener('input', changeColor);
+thumbs.forEach(function(item, index) {
+    item.onmouseover = function() {
+      //console.log(this.dataset.image);
+      main.src = this.dataset.image;
+      text.textContent = this.title;
+    }
+  });
